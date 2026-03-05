@@ -215,6 +215,7 @@ ul {
     overflow: hidden;
     transition: var(--transition);
     box-shadow: var(--shadow-sm);
+    transform: translate(var(--parallax-x, 0px), var(--parallax-y, 0px));
 }
 
 /* =========================================
@@ -339,8 +340,9 @@ ul {
    Hero Section
    ========================================= */
 .hero-section {
-    height: 100vh;
-    min-height: 700px;
+    min-height: 100vh;
+    padding-top: 120px;
+    padding-bottom: 80px;
     display: flex;
     align-items: center;
     position: relative;
@@ -554,9 +556,9 @@ body.dark-theme .hero-image-backdrop {
 }
 
 .skill-card:hover {
-    box-shadow: var(--shadow-md);
-    transform: translateY(-8px);
-    border-color: var(--primary);
+    box-shadow: 0 15px 35px var(--accent-glow);
+    transform: translate(var(--parallax-x, 0px), calc(var(--parallax-y, 0px) - 8px)) scale(1.02);
+    border-color: var(--accent);
 }
 
 .skill-icon {
@@ -638,7 +640,9 @@ body.dark-theme .hero-image-backdrop {
 }
 
 .project-card:hover {
-    box-shadow: var(--shadow-md);
+    box-shadow: 0 15px 35px var(--accent-glow);
+    transform: translate(var(--parallax-x, 0px), calc(var(--parallax-y, 0px) - 8px)) scale(1.02);
+    border-color: var(--accent);
 }
 
 .project-title {
@@ -995,11 +999,29 @@ body.dark-theme .hero-image-backdrop {
     .hero-actions {
         justify-content: flex-start;
     }
+    .section {
+        padding: 60px 0;
+    }
+    .about-content, .github-container, .contact-form, .skill-card, .project-card {
+        padding: 2rem 1.5rem;
+    }
     .section-header {
         text-align: left;
     }
     .scroll-indicator {
         display: none;
+    }
+    .hero-title {
+        font-size: 2.5rem;
+    }
+    .hero-subtitle {
+        font-size: 1.1rem;
+    }
+    .contact-wrapper {
+        gap: 2rem;
+    }
+    .timeline-item {
+        padding-left: 2rem;
     }
 }
 /* =========================================

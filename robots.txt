@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://mrrathod.in/sitemap.xml
+Sitemap: http://ravi-portfolio.mrrathod.in/sitemap.xml

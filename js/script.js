@@ -11,13 +11,19 @@ document.addEventListener('DOMContentLoaded', () => {
     const themeToggleBtn = document.getElementById('theme-toggle');
     const themeIcon = themeToggleBtn ? themeToggleBtn.querySelector('i') : null;
 
-    // Check localStorage for saved theme
+    // Default to dark theme unless user explicitly chose light
     const currentTheme = localStorage.getItem('theme');
-    if (currentTheme === 'dark') {
+    if (currentTheme !== 'light') {
         document.body.classList.add('dark-theme');
         if (themeIcon) {
             themeIcon.classList.remove('fa-moon');
             themeIcon.classList.add('fa-sun');
+        }
+    } else {
+        document.body.classList.remove('dark-theme');
+        if (themeIcon) {
+            themeIcon.classList.remove('fa-sun');
+            themeIcon.classList.add('fa-moon');
         }
     }
 
@@ -153,9 +159,9 @@ document.addEventListener('DOMContentLoaded', () => {
             
             // Only apply on desktop to prevent weird mobile issues
             if(window.innerWidth > 768) {
-                // Ensure transform doesn't overwrite necessary existing transforms entirely
-                // We use CSS variables or a wrapping element ideally, but for this simple setup:
-                card.style.transform = `translate(${x}px, ${y}px)`;
+                // We use CSS variables for smooth interaction with CSS hover states
+                card.style.setProperty('--parallax-x', `${x}px`);
+                card.style.setProperty('--parallax-y', `${y}px`);
             }
         });
     }
