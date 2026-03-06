@@ -7,13 +7,6 @@
   --glass: rgba(25, 25, 25, 0.4);
   --border: rgba(255, 255, 255, 0.08);
 }
-body.light-theme {
-  --bg: #f8fafc;
-  --text: #0f172a;
-  --text-muted: #475569;
-  --glass: rgba(255, 255, 255, 0.6);
-  --border: rgba(0, 0, 0, 0.08);
-}
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body {
@@ -71,14 +64,6 @@ button { font-family: 'Inter', sans-serif; cursor: none; }
     border: none; color: #fff; transition: transform 0.3s; display: inline-block;
 }
 .btn-primary:hover { transform: scale(1.05); }
-
-.theme-toggle {
-    background: transparent; border: none; color: var(--text); font-size: 1.2rem;
-    cursor: none; display: flex; align-items: center; justify-content: center;
-    transition: transform 0.3s, color 0.3s; width: 40px; height: 40px;
-    border-radius: 50%; border: 1px solid var(--border);
-}
-.theme-toggle:hover { color: var(--accent-2); transform: scale(1.1); background: rgba(255,255,255,0.05); }
 
 /* Hero */
 .hero-sec {

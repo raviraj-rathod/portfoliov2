@@ -16,42 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     requestAnimationFrame(raf);
 
-    // 2. Hash Links Smooth Scroll (Lenis Intercept)
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-            const target = document.querySelector(this.getAttribute('href'));
-            if (target) {
-                lenis.scrollTo(target, { offset: -50, duration: 1.5 });
-            }
-        });
-    });
-
-    // 3. Theme Toggler
-    const themeBtn = document.getElementById('theme-toggle');
-    const themeIcon = themeBtn ? themeBtn.querySelector('i') : null;
-    
-    // Check saved theme
-    if (localStorage.getItem('theme') === 'light') {
-        document.body.classList.add('light-theme');
-        if (themeIcon) { themeIcon.classList.replace('fa-moon', 'fa-sun'); }
-    }
-    
-    if (themeBtn) {
-        themeBtn.addEventListener('click', () => {
-            document.body.classList.toggle('light-theme');
-            let isLight = document.body.classList.contains('light-theme');
-            localStorage.setItem('theme', isLight ? 'light' : 'dark');
-            
-            if (isLight) {
-                themeIcon.classList.replace('fa-moon', 'fa-sun');
-            } else {
-                themeIcon.classList.replace('fa-sun', 'fa-moon');
-            }
-        });
-    }
-
-    // 4. Custom Cursor (Neo-Brutalist Ring)
+    // 2. Custom Cursor (Neo-Brutalist Ring)
     const cursorDot = document.querySelector('.cursor-dot');
     const cursorRing = document.querySelector('.cursor-ring');
     
@@ -72,22 +37,22 @@ document.addEventListener('DOMContentLoaded', () => {
             cursorRing.style.top = ringY + 'px';
         });
 
-        document.querySelectorAll('a, button, input, textarea, .skill-row, .project-card, .theme-toggle').forEach(el => {
+        document.querySelectorAll('a, button, input, textarea, .skill-box, .project-card').forEach(el => {
             el.addEventListener('mouseenter', () => document.body.classList.add('cursor-hover'));
             el.addEventListener('mouseleave', () => document.body.classList.remove('cursor-hover'));
         });
     } else {
-        if(cursorDot) cursorDot.style.display = 'none';
-        if(cursorRing) cursorRing.style.display = 'none';
+        cursorDot.style.display = 'none';
+        cursorRing.style.display = 'none';
     }
 
-    // 5. GSAP Initialization
+    // 3. GSAP Initialization
     gsap.registerPlugin(ScrollTrigger);
     lenis.on('scroll', ScrollTrigger.update);
     gsap.ticker.add((time) => { lenis.raf(time * 1000); });
     gsap.ticker.lagSmoothing(0, 0);
 
-    // 6. Loader & Initial Split Animations
+    // 4. Loader & Initial Split Animations
     const tl = gsap.timeline();
     
     tl.to(".progress", { width: "100%", duration: 1.5, ease: "power2.inOut" })
