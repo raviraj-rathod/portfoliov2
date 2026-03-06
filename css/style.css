@@ -206,7 +206,7 @@ footer { padding: 4rem 0; border-top: 1px solid var(--border); margin-top: 4rem;
     .nav-links { display: none; }
     .project-card { width: 90vw; }
     .projects-container { flex-direction: column; width: 100%; padding: 0 5vw; gap: 2rem; }
-    .work-sec { height: auto; padding-bottom: 5rem; }
+    .work-sec { height: auto; padding-bottom: 5rem; overflow: visible; padding-top: 3rem; }
     .projects-wrapper { height: auto; display: block; }
     .sec-title { text-align: left; margin-bottom: 2rem; }
     .skill-row { flex-direction: column; align-items: flex-start; gap: 1rem; padding: 1.5rem 0; }

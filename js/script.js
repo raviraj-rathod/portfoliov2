@@ -143,13 +143,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    mm.add("(max-width: 900px)", () => {
-        gsap.from(".project-card", {
-            scrollTrigger: { trigger: "#work", start: "top 80%" },
-            y: 50, opacity: 0, duration: 0.8, stagger: 0.15
-        });
-    });
-
     // Experience Timeline
     gsap.utils.toArray('.timeline-row').forEach((row, i) => {
         gsap.from(row, {
