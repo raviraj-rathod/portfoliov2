@@ -121,12 +121,13 @@ document.addEventListener('DOMContentLoaded', () => {
         y: 30, opacity: 0, duration: 0.8, stagger: 0.1
     });
 
-    // 6. Horizontal Scroll for Projects (Desktop Only)
-    if (window.innerWidth > 900) {
+    // 6. Horizontal Scroll for Projects (GSAP MatchMedia for Desktop vs Mobile)
+    let mm = gsap.matchMedia();
+
+    mm.add("(min-width: 901px)", () => {
         const projectsContainer = document.querySelector('.projects-container');
         const projectsWrapper = document.querySelector('.projects-wrapper');
         
-        // Calculate the actual horizontal scroll distance based on children wrapper box
         let getTotalWidth = () => projectsContainer.offsetWidth - window.innerWidth + window.innerWidth * 0.1; 
         
         gsap.to(projectsContainer, {
@@ -140,17 +141,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 invalidateOnRefresh: true
             }
         });
-    } else {
-        // Mobile fallback - vertical list
+    });
+
+    mm.add("(max-width: 900px)", () => {
         gsap.from(".project-card", {
-            scrollTrigger: { trigger: "#work", start: "top 85%" },
+            scrollTrigger: { trigger: "#work", start: "top 80%" },
             y: 50, opacity: 0, duration: 0.8, stagger: 0.15
         });
-        document.querySelector('.projects-container').style.flexDirection = 'column';
-        document.querySelector('.projects-container').style.padding = '0';
-        document.querySelector('.work-sec').style.height = 'auto';
-        document.querySelector('.projects-wrapper').style.height = 'auto';
-    }
+    });
 
     // Experience Timeline
     gsap.utils.toArray('.timeline-row').forEach((row, i) => {
